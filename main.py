@@ -32,7 +32,7 @@ resources = {
     "money": 0
 }
 
-machine_comm =""
+machine_comm = ""
 
 # TODO 1. Prompt user by asking “What would you like? (espresso/latte/cappuccino):”
 # a. Check the user’s input to decide what to do next.
@@ -55,7 +55,9 @@ machine_comm =""
 # not continue to make the drink but print: “Sorry there is not enough water.”
 # c. The same should happen if another resource is depleted, e.g. milk or coffee.
 #
-def resource_check(machine_comm):
+
+
+def resource_check(command):
     water = resources['water']
     milk = resources['milk']
     coffee = resources['coffee']
@@ -88,10 +90,11 @@ def resource_check(machine_comm):
             return 1
 
 
-def money_check(machine_comm):
+def money_check(command):
     global resources
     print("Please insert coins.")
     change = float(0)
+    total_money = float(0)
     quarter = int(input("How many quarters? "))
     dime = int(input("How many dimes? "))
     nickel = int(input("How many nickels? "))
@@ -128,24 +131,35 @@ def money_check(machine_comm):
         return resources['water'], resources['coffee'], resources['milk'], resources['money']
     else:
         print("Sorry, not enough money. Here's a refund.")
-        total_money = 0
+
 
 while machine_comm != "off":
 
     machine_comm = input("What would you like? (espresso/latte/cappuccino): ")
-    total_money = 0
+
     if machine_comm == "off":
         exit()
     elif machine_comm == "report":
         print(f"Water: {resources['water']} \nMilk: {resources['milk']} \nCoffee: {resources['coffee']} "
           f"\nMoney: $ {resources['money']}")
-    elif machine_comm == "espresso" or "latte" or "cappuccino":
+    elif machine_comm == "espresso":
         if resource_check(machine_comm) == 1:
             pass
         else:
             money_check(machine_comm)
+    elif machine_comm == "latte":
+        if resource_check(machine_comm) == 1:
+            pass
+        else:
+            money_check(machine_comm)
+    elif machine_comm == "cappuccino":
+        if resource_check(machine_comm) == 1:
+            pass
+        else:
+            money_check(machine_comm)
+    else:
+        pass
 
-    total_money = 0
 
 
 
