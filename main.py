@@ -142,17 +142,7 @@ while machine_comm != "off":
     elif machine_comm == "report":
         print(f"Water: {resources['water']} \nMilk: {resources['milk']} \nCoffee: {resources['coffee']} "
           f"\nMoney: $ {resources['money']}")
-    elif machine_comm == "espresso":
-        if resource_check(machine_comm) == 1:
-            pass
-        else:
-            money_check(machine_comm)
-    elif machine_comm == "latte":
-        if resource_check(machine_comm) == 1:
-            pass
-        else:
-            money_check(machine_comm)
-    elif machine_comm == "cappuccino":
+    elif (machine_comm == "espresso") or (machine_comm == "latte") or (machine_comm == "cappuccino"):
         if resource_check(machine_comm) == 1:
             pass
         else:
